@@ -1,0 +1,70 @@
+set acelib "./xs/sss_jeff311u.xsdata"
+
+set title "Running the dynamic simulation"
+set acelib "./xs/sss_jeff311u.xsdata"
+
+surf 1  cylz 0.0 0.0 10.0  % Pressure tube inner wall
+surf 2  cube 0.0 0.0 0.0 90.0  % Pressure tube inner wall
+
+% --- Cell definitions:
+
+cell 1 0  fuel  -1      % Pin lattice
+cell 2 0 mod -2 1
+cell 99 0 outside 2
+
+% --- Fuel material is a homogenized LWR material:
+
+mat fuel    -12.4375010
+ 8016.03c    -1.18473E+1
+ 92235.03c    -95.27118E-1
+ 92238.03c    -9.75256E+1
+
+mat mod  -2.226
+ 6000.03c    -1
+
+% --- Set up time structures for simulation and detectors:
+
+% --- 30 time bins for detector
+
+tme dettime 2 30 0 3e-1
+
+% --- 1 time interval for simulation (no population control)
+
+tme simutime 2 10 0 3e-1
+
+% --- Increase the size of neutron buffer since there is no pop. control
+
+set nbuf 30
+
+% --- Neutron population:
+
+% --- 60M neutrons in 6k batches (1k neutrons per batch)
+
+set nps 100 5 simutime
+
+% --- Link source (use point-wise precursor tracking)
+
+set dynsrc "./source" 1
+
+% --- Set up detectors:
+
+% --- Tally neutron population as a function of time
+
+det 1 dc 1 di dettime
+
+
+
+% --- Save neutron and precursor source to "./source_end"-files
+
+%set savesrc "./source_end"
+set savesrc "/home/terry/SSSCoup/SSSTrans/Output/src"
+
+% --- Do not generate group constants
+
+set gcu -1
+set pbuf 20
+set nbuf 40
+
+% --- Do not use implicit capture, nxn, or fission
+
+set impl 0 0 0

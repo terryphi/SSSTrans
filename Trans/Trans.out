@@ -1,0 +1,259 @@
+
+  _                   .-=-.           .-=-.          .-==-.       
+ { }      __        .' O o '.       .' O o '.       /  -<' )--<   
+ { }    .' O'.     / o .-. O \     / o .-. O \     /  .---`       
+ { }   / .-. o\   /O  /   \  o\   /O  /   \  o\   /O /            
+  \ `-` /   \ O`-'o  /     \  O`-'o  /     \  O`-`o /             
+   `-.-`     '.____.'       `._____.'       `.____.'              
+
+Serpent 2 beta
+
+A Continuous-energy Monte Carlo Reactor Physics Burnup Calculation Code
+
+ - Version 2.1.30 (February 14, 2018) -- Contact: serpent@vtt.fi
+
+ - Reference: J. Leppanen, et al. "The Serpent Monte Carlo code: Status,
+              development and applications in 2013." Ann. Nucl. Energy,
+              82 (2015) 142-150.
+
+ - Compiled Jun  5 2018 14:04:34
+
+ - MPI Parallel calculation mode not available
+
+ - OpenMP Parallel calculation mode available
+
+ - Geometry and mesh plotting available
+
+ - Default data path not set
+
+Begin calculation on Sun Jul 15 22:09:40 2018
+
+Reading input file "/home/terry/SSSCoup/SSSTrans/Trans/Trans.SSSIN"...
+
+Checking duplicate input definitions...
+OK.
+
+Creating geometry...
+OK.
+
+Counting geometry zones...
+
+Processing cells...
+OK.
+
+Linking materials to geometry...
+OK.
+
+Counting cells...
+OK.
+
+Reading ACE directory files...
+OK.
+
+Adding nuclides in material fuel...
+
+Nuclide   8016.03c -- oxygen 16 at 300K (O-16)
+Nuclide  92235.03c -- uranium 235 at 300K (U-235)
+Nuclide  92238.03c -- uranium 238 at 300K (U-238)
+
+Adding nuclides in material mod...
+
+Nuclide   6000.03c -- natural carbon at 300K (C-nat)
+
+Checking data and printing output...
+OK.
+
+
+***** Sun Jul 15 22:09:41 2018 (seed = 1531706980)
+Warning message from function ProcessNuclides:
+
+Minimum photon cross section energy 1.000000E+37 MeV is
+above the energy grid minimum 1.000000E-03 MeV.
+The energy grid minimum is set to 1.000000E+37 MeV.
+Possible changes in energy cutoff cards (warned if any).
+
+
+***** Sun Jul 15 22:09:41 2018 (seed = 1531706980)
+Warning message from function ProcessNuclides:
+
+Photon energy cutoff 1.000000E-03 MeV is changed to 1.000000E+37.
+
+
+Generating unionize energy grids...
+
+Adding points:
+
+  6000.03c -- Points added in neutron grid: 1101
+  8016.03c -- Points added in neutron grid: 1910
+ 92235.03c -- Points added in neutron grid: 30710
+ 92238.03c -- Points added in neutron grid: 64688
+
+Generating unionized energy grid:
+
+ - Unionization performed without grid thinning
+   between 1.00E-11 and 20.0 MeV.
+
+ - Final neutron grid size: 98181 points.
+
+ - 5.09 Mb of memory allocated for grid data
+
+OK.
+
+Processing cross sections and ENDF reaction laws...
+
+Nuclide   6000.03c -- natural carbon at 300K (C-nat)
+Nuclide   8016.03c -- oxygen 16 at 300K (O-16)
+Nuclide  92235.03c -- uranium 235 at 300K (U-235)
+Nuclide  92238.03c -- uranium 238 at 300K (U-238)
+
+SUMMARY -- 4 nuclides included in calculation:
+
+ - 4 transport nuclides
+ - Neutron energy cut-offs at 1.00E-11 and 20.0 MeV
+ - 127 transport reactions
+ - 31 special reactions
+ - 27.32 Mb of memory allocated for data
+
+Normalizing compositions and processing mixtures...
+OK.
+
+Allocating memory for macroscopic cross section data...
+OK.
+
+Allocating memory for particle structures...
+OK.
+
+Calculating maximum densities...
+OK.
+
+Performing density cut-off...
+OK.
+
+Sorting material-wise reaction lists:
+
+   0% complete
+ 100% complete
+
+Calculating macroscopic cross sections:
+
+   0% complete
+ 100% complete
+
+Calculating DT neutron majorant cross section:
+
+   0% complete
+ 100% complete
+
+Clearing results and statistics...
+OK.
+
+Starting time dependent simulation with delayed neutrons...
+
+------------------------------------------------------------
+
+Serpent 2.1.30 -- Dynamic neutron external source simulation
+
+Title: "Running the dynamic simulation" 
+
+Source batch  1 / 5 (20 histories per batch)
+Running time :                  0:00:02
+Estimated running time :        -:--:--
+Estimated running time left :   -:--:--
+
+Estimated relative CPU usage :   200.7%
+
+Multiplication   = 4.1103E+00 (0.00000)
+k-eff (analog)   = 0.75671 +/- 0.00000  [0.75671  0.75671]
+k0    (source)   = 0.51622 +/- 0.00000  [0.51622  0.51622]
+
+Time cut-off at 3.00E-01 seconds, 10 intervals
+
+(O4) (OMP=20) 
+------------------------------------------------------------
+------------------------------------------------------------
+
+Serpent 2.1.30 -- Dynamic neutron external source simulation
+
+Title: "Running the dynamic simulation" 
+
+Source batch  2 / 5 (20 histories per batch)
+Running time :                  0:00:03
+Estimated running time :        -:--:--
+Estimated running time left :   -:--:--
+
+Estimated relative CPU usage :   219.9%
+
+Multiplication   = 9.0799E+00 (0.54732)
+k-eff (analog)   = 0.84276 +/- 0.08606  [0.67409  1.01144]
+k0    (source)   = 0.58438 +/- 0.06815  [0.45080  0.71796]
+
+Time cut-off at 3.00E-01 seconds, 10 intervals
+
+(O4) (OMP=20) 
+------------------------------------------------------------
+------------------------------------------------------------
+
+Serpent 2.1.30 -- Dynamic neutron external source simulation
+
+Title: "Running the dynamic simulation" 
+
+Source batch  3 / 5 (20 histories per batch)
+Running time :                  0:00:04
+Estimated running time :        0:00:06
+Estimated running time left :   0:00:01
+
+Estimated relative CPU usage :   238.6%
+
+Multiplication   = 2.1286E+01 (0.58907)
+k-eff (analog)   = 0.88788 +/- 0.06711  [0.75634  1.01943]
+k0    (source)   = 0.68949 +/- 0.11224  [0.46951  0.90947]
+
+Time cut-off at 3.00E-01 seconds, 10 intervals
+
+(O4) (OMP=20) 
+------------------------------------------------------------
+------------------------------------------------------------
+
+Serpent 2.1.30 -- Dynamic neutron external source simulation
+
+Title: "Running the dynamic simulation" 
+
+Source batch  4 / 5 (20 histories per batch)
+Running time :                  0:00:04
+Estimated running time :        0:00:05
+Estimated running time left :   0:00:00
+
+Estimated relative CPU usage :   200.9%
+
+Multiplication   = 1.7675E+01 (0.54163)
+k-eff (analog)   = 0.87938 +/- 0.04821  [0.78488  0.97388]
+k0    (source)   = 0.71717 +/- 0.08405  [0.55243  0.88191]
+
+Time cut-off at 3.00E-01 seconds, 10 intervals
+
+(O4) (OMP=20) 
+------------------------------------------------------------
+------------------------------------------------------------
+
+Serpent 2.1.30 -- Dynamic neutron external source simulation
+
+Title: "Running the dynamic simulation" 
+
+Source batch  5 / 5 (20 histories per batch)
+Running time :                  0:00:06
+Estimated running time :        0:00:06
+Estimated running time left :   0:00:00
+
+Estimated relative CPU usage :   280.7%
+
+Multiplication   = 2.1387E+01 (0.38774)
+k-eff (analog)   = 0.89798 +/- 0.04172  [0.81621  0.97976]
+k0    (source)   = 0.74239 +/- 0.06982  [0.60554  0.87924]
+
+Time cut-off at 3.00E-01 seconds, 10 intervals
+
+(O4) (OMP=20) 
+------------------------------------------------------------
+
+Transport cycle completed in 4.34 seconds.
+

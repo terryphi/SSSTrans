@@ -1,5 +1,6 @@
 
 #% cd C:\cygwin64\home\terry\S2bin
+%cd C:\cygwin64\home\terry\SSSCoup\SSSTrans
 import struct
 import csv
 import shutil
@@ -10,21 +11,21 @@ from subprocess import Popen, PIPE, STDOUT
 import random
 
 
-#okay, this now runs the SS file from python.
 
+runTrans();
 #todo:
 #write functions that
 #-run SS from python
 #-run transient from python
 def runSS():
-    inCmd = r'"/home/terry/couple/Problem4/runSS.sh"'
+    inCmd = r'"/home/terry/SSSCoup/SSSTrans/SS/runSS.sh"'
     cmd = r'C:\cygwin64\bin\bash.exe --login ' + inCmd
     p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
     output = p.stdout.read()
     return output
 
 def runTrans():
-    inCmd = r'"/home/terry/couple/Problem4/runTrans.sh"'
+    inCmd = r'"/home/terry/SSSCoup/SSSTrans/Trans/runTrans.sh"'
     cmd = r'C:\cygwin64\bin\bash.exe --login ' + inCmd
     p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
     output = p.stdout.read()
@@ -106,10 +107,10 @@ def write_source_file():
 #########!!!!!!caustion!!!!!!!######
 #ssOut = runSS()
 #tOut = runTrans()
-
+%pwd
 v = 10
 dt = 3
-pp = readPP('S2bin/source')
+pp = readPP('Output/src')
 OOC = gen_OOC_DF()
 IC = gen_IC_DF() #blank
 
