@@ -9,6 +9,7 @@ import os
 import subprocess
 from subprocess import Popen, PIPE, STDOUT
 import random
+import numpy as np
 
 
 
@@ -63,15 +64,18 @@ def cullPrecsPastBoundary(df,z):
 
 
 def doDecay(df,dt):
+    #df = OOC
+    #dt = 2.5
     #dn/dt = -lN  so the probability of decay per atom is 'l*dt'
     #from .main file...
     decayConst =  {0 : 1.246670E-02, 1: 2.829170E-02, 2: 4.252440E-02, 3 : 1.330420E-01, 4 : 2.924672E-01, 5 : 6.664877E-01, 6 : 1.634781E+00, 7 : 3.554600E+00}
     #need the group constants.
     remaining = []
-    for idx,v in pp.iterrows():
+    for idx,v in df.iterrows():
         #idx,v = [x for x in pp.iterrows()][1]
         rr = random.random() #random roll
-        p_remove = decayConst[int(v['grp'])] * dt #roll a normalized dice and remove if the roll is less than this value.
+        dc = decayConst[int(v['grp'])]
+        p_remove = dc * dt #roll a normalized dice and remove if the roll is less than this value.
         if rr > p_remove:
             remaining.append([idx,v])
 
@@ -154,3 +158,28 @@ with open('t.txt','wb') as f:
 #how to update the OOC DF
 #1)  store the precs that have move past the LB bound in the OOC
 #2) deplete the DB
+
+#################################
+%cd C:\cygwin64\home\terry\SSSCoup\SSSTrans
+#runSS()
+#runTrans()
+pp = readPP('Output/src')
+A = -90
+B = 90
+C = 180
+OOC = gen_OOC_DF()
+IC = gen_IC_DF() #blank
+
+
+#for loop
+v = 100
+steps = 5
+tMax = 10
+dt = tMax/steps
+for t in np.linspace(0,tMax,steps):
+    PM = doMove(pp,v,dt) #PM is for postMoveOOC
+    OOC = doMove(OOC,v,dt)
+    OOC = OOC.append(precsPastBoundary(PM,B))
+    OOC = doDecay(OOC,dt);
+
+    #todo, write the precpoints file for the next run and execute the next run.
