@@ -13,7 +13,6 @@ import numpy as np
 
 
 
-runTrans();
 #todo:
 #write functions that
 #-run SS from python
@@ -98,7 +97,7 @@ def update_IC_DB(pp,IC,OOC):
 
     return 0#
 
-def write_source_file():
+def write_source_file(OOC, IC):
     return 0
 
 
@@ -111,6 +110,7 @@ def write_source_file():
 #########!!!!!!caustion!!!!!!!######
 #ssOut = runSS()
 #tOut = runTrans()
+%cd C:\cygwin64\home\terry\SSSCoup\SSSTrans
 %pwd
 v = 10
 dt = 3
@@ -172,14 +172,31 @@ IC = gen_IC_DF() #blank
 
 
 #for loop
-v = 100
+v = 30
 steps = 5
 tMax = 10
 dt = tMax/steps
 for t in np.linspace(0,tMax,steps):
-    PM = doMove(pp,v,dt) #PM is for postMoveOOC
+    pp = readPP('Output/src')
+
+    IC = doMove(pp,v,dt) #PM is for postMoveOOC
     OOC = doMove(OOC,v,dt)
-    OOC = OOC.append(precsPastBoundary(PM,B))
+
+    #do In-core cut
+    cutIC = precsPastBoundary(PM,B)
+    IC = IC.drop(cutIC.index)
+    OOC = OOC.append(cutIC)
+
+    #do out-of-core cut.
+    cutOOC = precsPastBoundary()
+    IC = IC.append(cutOOC)
+    OOC = OOC.drop(cutOOC.index)
+
+    #do decay
     OOC = doDecay(OOC,dt);
+    PM = doDecay(PM,dt)
+
+
+    #generate the IC file.
 
     #todo, write the precpoints file for the next run and execute the next run.
