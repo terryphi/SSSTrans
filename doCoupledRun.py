@@ -10,7 +10,7 @@ import subprocess
 from subprocess import Popen, PIPE, STDOUT
 import random
 import numpy as np
-
+import itertools as IT
 
 
 #todo:
@@ -90,17 +90,21 @@ def Update_OOC_DB(pp,OOC):
     appendedOOC = OOC.append(pastBoundary)
     return appendedOOC
 
-def update_IC_DB(pp,IC,OOC):
-    #taeke the pp
-    #cull everything past the UL
-    #inject the OOC precs that are past the upper boundary.
 
-    return 0#
+def write_source_file(fileName,df):
+    fileName = "tst.precpoints"
+    df = pp
 
-def write_source_file(OOC, IC):
+
+    toWrite = [item for idx,row in df.iterrows() for item in row]
+
+
+    outData = struct.pack('d'*len(toWrite),*toWrite)
+
+
     return 0
 
-
+1+1
 #3 points, ABC,
 ##-> A - start of IC region -90
 ## ->B - end of IC region +90
@@ -110,35 +114,6 @@ def write_source_file(OOC, IC):
 #########!!!!!!caustion!!!!!!!######
 #ssOut = runSS()
 #tOut = runTrans()
-%cd C:\cygwin64\home\terry\SSSCoup\SSSTrans
-%pwd
-v = 10
-dt = 3
-pp = readPP('Output/src')
-OOC = gen_OOC_DF()
-IC = gen_IC_DF() #blank
-
-#move both the IC and OOC
-postMoveIC = doMove(pp,v,dt)
-postMoveOOC = doMove(OOC,v,dt)
-
-#transfer the IC precs that have moved past the voundary.
-pastBoundary = precsPastBoundary(postMove,90) #select
-#remove from pp
-culledpp = pp.drop(pastBoundary.index)
-#paste
-OOC = OOC.append(pastBoundary)
-#from the main file...
-
-#write a new pp file from the OOC which have gone past C and the culledPP db.
-
-
-#next up, append the OOC DB
-
-with open('t.txt','wb') as f:
-    f.write(tOut)
-
-#okay, good, next up, write a function that moves the precs in a
 
 #okay, now I've got the precursors moving.  Now, detect
 #the precs that have gone past the bound, and move them into the OOC dataframe
@@ -158,7 +133,6 @@ with open('t.txt','wb') as f:
 #how to update the OOC DF
 #1)  store the precs that have move past the LB bound in the OOC
 #2) deplete the DB
-
 #################################
 %cd C:\cygwin64\home\terry\SSSCoup\SSSTrans
 #runSS()
@@ -183,19 +157,18 @@ for t in np.linspace(0,tMax,steps):
     OOC = doMove(OOC,v,dt)
 
     #do In-core cut
-    cutIC = precsPastBoundary(PM,B)
+    cutIC = precsPastBoundary(IC,B)
     IC = IC.drop(cutIC.index)
     OOC = OOC.append(cutIC)
 
     #do out-of-core cut.
-    cutOOC = precsPastBoundary()
+    cutOOC = precsPastBoundary(OOC,C)
     IC = IC.append(cutOOC)
     OOC = OOC.drop(cutOOC.index)
 
     #do decay
     OOC = doDecay(OOC,dt);
-    PM = doDecay(PM,dt)
-
+    IC = doDecay(IC,dt)
 
     #generate the IC file.
 
