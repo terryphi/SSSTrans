@@ -34,7 +34,7 @@ tme simutime 2 10 0 3e-1
 
 % --- Increase the size of neutron buffer since there is no pop. control
 
-set nbuf 30
+set nbuf 50
 
 % --- Neutron population:
 
@@ -63,7 +63,7 @@ set savesrc "/home/terry/SSSCoup/SSSTrans/Output/src"
 
 set gcu -1
 set pbuf 20
-set nbuf 40
+set nbuf 80
 
 % --- Do not use implicit capture, nxn, or fission
 

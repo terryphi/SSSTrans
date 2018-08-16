@@ -26,7 +26,7 @@ A Continuous-energy Monte Carlo Reactor Physics Burnup Calculation Code
 
  - Default data path not set
 
-Begin calculation on Wed Aug 15 18:44:56 2018
+Begin calculation on Wed Aug 15 18:40:36 2018
 
 Reading input file "/home/terry/SSSCoup/SSSTrans/Trans/Trans.SSSIN"...
 
@@ -64,7 +64,7 @@ Checking data and printing output...
 OK.
 
 
-***** Wed Aug 15 18:44:58 2018 (seed = 1534373096)
+***** Wed Aug 15 18:40:38 2018 (seed = 1534372836)
 Warning message from function ProcessNuclides:
 
 Minimum photon cross section energy 1.000000E+37 MeV is
@@ -73,7 +73,7 @@ The energy grid minimum is set to 1.000000E+37 MeV.
 Possible changes in energy cutoff cards (warned if any).
 
 
-***** Wed Aug 15 18:44:58 2018 (seed = 1534373096)
+***** Wed Aug 15 18:40:38 2018 (seed = 1534372836)
 Warning message from function ProcessNuclides:
 
 Photon energy cutoff 1.000000E-03 MeV is changed to 1.000000E+37.
@@ -160,21 +160,100 @@ Running time :                  0:00:04
 Estimated running time :        -:--:--
 Estimated running time left :   -:--:--
 
-Estimated relative CPU usage :   209.8%
+Estimated relative CPU usage :   272.5%
 
-Multiplication   = 1.8045E+01 (0.00000)
-k-eff (analog)   = 0.94458 +/- 0.00000  [0.94458  0.94458]
-k0    (source)   = 0.83684 +/- 0.00000  [0.83684  0.83684]
+Multiplication   = 4.2261E+01 (0.00000)
+k-eff (analog)   = 0.97634 +/- 0.00000  [0.97634  0.97634]
+k0    (source)   = 1.00496 +/- 0.00000  [1.00496  1.00496]
+
+Time cut-off at 3.00E-01 seconds, 10 intervals
+
+(O4) (OMP=20) 
+------------------------------------------------------------
+------------------------------------------------------------
+
+Serpent 2.1.30 -- Dynamic neutron external source simulation
+
+Title: "Running the dynamic simulation" 
+
+Source batch  2 / 5 (20 histories per batch)
+Running time :                  0:00:05
+Estimated running time :        0:00:09
+Estimated running time left :   0:00:03
+
+Estimated relative CPU usage :   237.3%
+
+Multiplication   = 2.6123E+01 (0.61777)
+k-eff (analog)   = 0.93809 +/- 0.03824  [0.86314  1.01305]
+k0    (source)   = 0.88702 +/- 0.11795  [0.65584  1.11819]
+
+Time cut-off at 3.00E-01 seconds, 10 intervals
+
+(O4) (OMP=20) 
+------------------------------------------------------------
+------------------------------------------------------------
+
+Serpent 2.1.30 -- Dynamic neutron external source simulation
+
+Title: "Running the dynamic simulation" 
+
+Source batch  3 / 5 (20 histories per batch)
+Running time :                  0:00:06
+Estimated running time :        0:00:09
+Estimated running time left :   0:00:02
+
+Estimated relative CPU usage :   208.5%
+
+Multiplication   = 2.5638E+01 (0.36390)
+k-eff (analog)   = 0.94522 +/- 0.02320  [0.89974  0.99069]
+k0    (source)   = 0.79182 +/- 0.11705  [0.56241  1.02123]
+
+Time cut-off at 3.00E-01 seconds, 10 intervals
+
+(O4) (OMP=20) 
+------------------------------------------------------------
+------------------------------------------------------------
+
+Serpent 2.1.30 -- Dynamic neutron external source simulation
+
+Title: "Running the dynamic simulation" 
+
+Source batch  4 / 5 (20 histories per batch)
+Running time :                  0:00:08
+Estimated running time :        0:00:09
+Estimated running time left :   0:00:01
+
+Estimated relative CPU usage :   181.0%
+
+Multiplication   = 2.1927E+01 (0.34523)
+k-eff (analog)   = 0.93575 +/- 0.01894  [0.89862  0.97287]
+k0    (source)   = 0.75813 +/- 0.08936  [0.58299  0.93327]
+
+Time cut-off at 3.00E-01 seconds, 10 intervals
+
+(O4) (OMP=20) 
+------------------------------------------------------------
+------------------------------------------------------------
+
+Serpent 2.1.30 -- Dynamic neutron external source simulation
+
+Title: "Running the dynamic simulation" 
+
+Source batch  5 / 5 (20 histories per batch)
+Running time :                  0:00:09
+Estimated running time :        0:00:09
+Estimated running time left :   0:00:00
+
+Estimated relative CPU usage :   169.1%
+
+Multiplication   = 1.9038E+01 (0.34332)
+k-eff (analog)   = 0.92188 +/- 0.02019  [0.88231  0.96145]
+k0    (source)   = 0.76762 +/- 0.06986  [0.63069  0.90455]
 
 Time cut-off at 3.00E-01 seconds, 10 intervals
 
 (O4) (OMP=20) 
 ------------------------------------------------------------
 
-***** Wed Aug 15 18:45:01 2018
-
-Input error:
-
-Insufficient neutron buffer size, increase value of
-parameter "nbuf" (currently set to 80.0)
+Transport cycle completed in 6.97 seconds.
 

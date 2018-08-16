@@ -93,7 +93,7 @@ def Update_OOC_DB(pp,OOC):
 
 def write_source_file(fileName,df):
     fileName = "tst.precpoints"
-    df = pp
+    df = IC
 
 
     toWrite = [item for idx,row in df.iterrows() for item in row]
@@ -101,10 +101,15 @@ def write_source_file(fileName,df):
 
     outData = struct.pack('d'*len(toWrite),*toWrite)
 
+    with open(fileName,'wb') as f:
+        f.write(outData)
 
-    return 0
 
-1+1
+    return
+
+def writeRunOut(toWrite,N):
+    with open(f'Output/runOuts/run{N}.txt','w+') as f:
+        f.writelines(out.decode('ascii'))
 #3 points, ABC,
 ##-> A - start of IC region -90
 ## ->B - end of IC region +90
@@ -134,10 +139,18 @@ def write_source_file(fileName,df):
 #1)  store the precs that have move past the LB bound in the OOC
 #2) deplete the DB
 #################################
+
+
+#write a run's output file to a text file
+
+
+
+
+
+
+
+
 %cd C:\cygwin64\home\terry\SSSCoup\SSSTrans
-#runSS()
-#runTrans()
-pp = readPP('Output/src')
 A = -90
 B = 90
 C = 180
@@ -147,10 +160,19 @@ IC = gen_IC_DF() #blank
 
 #for loop
 v = 30
-steps = 5
-tMax = 10
+steps = 50
+tMax = 100
 dt = tMax/steps
-for t in np.linspace(0,tMax,steps):
+################ Actual execution loop #########
+out = runSS()
+writeRunOut(out,'SS')
+
+out = runTrans() #initial run
+writeRunOut(out,'0')
+
+pp = readPP('Output/src')
+
+for idx, t in enumerate(np.linspace(0,tMax,steps)):
     pp = readPP('Output/src')
 
     IC = doMove(pp,v,dt) #PM is for postMoveOOC
@@ -170,6 +192,8 @@ for t in np.linspace(0,tMax,steps):
     OOC = doDecay(OOC,dt);
     IC = doDecay(IC,dt)
 
-    #generate the IC file.
+    write_source_file('Output/src.precpoints',IC)
+    out = runTrans()
+    writeRunOut(out,idx)
 
     #todo, write the precpoints file for the next run and execute the next run.
